@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -29,15 +34,21 @@ code {
 }
 
 .grid-container {
-  border: 1px solid black;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(5, 1fr);
   width: 80vmin;
   height: 50vmin;
+  border: 2px solid black;
 }
 
 .square {
+  cursor: pointer;
   border: 2px solid black;
-  text-align: center;
+  transition: all 200ms linear;
+  background-color: #fff;
+}
+
+.square:hover {
+  transform: scale(1.1);
 }
