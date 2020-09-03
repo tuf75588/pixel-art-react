@@ -1,11 +1,14 @@
 import React from 'react';
 import Grid from './components/Grid';
+import ColorPicker from './components/ColorPicker';
 function App(): JSX.Element {
+  const [currentColor, setCurrentColor] = React.useState('#ffe4e1');
+
   return (
     <div className="App container">
-      <input type="color" name="color-picker" id="color-picker" />
       <React.Fragment>
-        <Grid rows={5} columns={8} />
+        <ColorPicker color={currentColor} />
+        <Grid currentColor={currentColor} />
       </React.Fragment>
     </div>
   );

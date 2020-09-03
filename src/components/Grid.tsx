@@ -1,22 +1,44 @@
 import React from 'react';
 
 type GridProps = {
-  columns: number;
-  rows: number;
+  currentColor: string;
 };
 
-function Grid({ columns, rows }: GridProps): JSX.Element {
-  const [cells] = React.useState(Array.from({ length: columns * rows }));
+function Grid({ currentColor }: GridProps): JSX.Element {
   const styles = {
     display: 'grid',
-    gridTemplateColumns: `repeat(${columns}, 1fr)`,
-    gridTemplateRows: `repeat(${rows}, 1fr)`,
+    gridTemplateColumns: 'repeat(8, 1fr)',
+    gridTemplateRows: `repeat(5, 1fr)`,
   };
-  const renderCells = cells.map((_, i) => <div className="square" key={i} />);
+
+  const buttonStyles = {
+    display: 'inline',
+  };
+  const [cells] = React.useState(
+    Array.from({ length: 40 }, (_, i) => ({ color: 'rgb(0,0,0)' }))
+  );
+  const renderCells = cells?.map((_, i) => (
+    <button
+      className="square"
+      key={i}
+      onClick={() => console.log('clicked on cell! ')}
+      style={buttonStyles}
+      name="colorChangeButton"
+    />
+  ));
   return (
-    <main className="grid-container" style={styles}>
-      {renderCells}
-    </main>
+    <section>
+      <div className="grid-container" style={styles}>
+        {renderCells}
+      </div>
+      <aside
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          padding: 0,
+        }}
+      ></aside>
+    </section>
   );
 }
 
