@@ -1,22 +1,12 @@
 import React from 'react';
-
+import Grid from './components/Grid';
 function App(): JSX.Element {
-  const [background, setBackground] = React.useState(
-    'rgb(255, 255, 255) none repeat scroll 0% 0%;'
-  );
   return (
     <div className="App container">
-      <main className="grid-container">
-        {Array.from({ length: 40 }, (_, i: number) => {
-          return (
-            <div
-              key={i}
-              className="square"
-              style={{ backgroundColor: background }}
-            />
-          );
-        })}
-      </main>
+      <input type="color" name="color-picker" id="color-picker" />
+      <React.Fragment>
+        <Grid rows={5} columns={8} />
+      </React.Fragment>
     </div>
   );
 }
